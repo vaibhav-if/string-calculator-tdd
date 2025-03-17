@@ -37,6 +37,14 @@ RSpec.describe 'StringCalculator' do
     it 'adds multiple values in custom delimeter string of any length' do
       expect(string_calculator.add("//[***]\n1***2***3")).to eq(6)
     end
+
+    it 'allows multiple delimeters' do
+      expect(string_calculator.add("//[*][%]\n1*2%3")).to eq(6)
+    end
+
+    it 'allows multiple delimeters of any length' do
+      expect(string_calculator.add("//[***][%%%]\n1***2%%%3")).to eq(6)
+    end
   end
 
   context 'negative numbers should throw an exception' do
