@@ -8,12 +8,20 @@ class StringCalculator
 
     string_numbers = string_numbers.gsub("\n", delimeter)
 
-    integer_array = string_numbers.split(delimeter).map(&:to_i)
-
-    negative_numbers = integer_array.select { |num| num < 0 }
+    sum = 0
+    negative_numbers = []
+    # iterate once for multiple conditions
+    string_numbers.split(delimeter).each do |c|
+      num = c.to_i
+      if num < 0
+        negative_numbers << num
+      elsif num <= 1000
+        sum += num
+      end
+    end
 
     return "negative numbers not allowed " << negative_numbers.join(", ") unless negative_numbers.empty?
 
-    return integer_array.sum
+    return sum
   end
 end
