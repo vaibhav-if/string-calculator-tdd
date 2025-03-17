@@ -29,5 +29,15 @@ RSpec.describe 'StringCalculator' do
     it 'adds two values in custom delimeter string' do
       expect(string_calculator.add("//;\n1;2")).to eq(3)
     end
+
+    it 'adds multiple values in custom delimeter string' do
+      expect(string_calculator.add("//:\n1:2:3")).to eq(6)
+    end
+  end
+
+  context 'negative numbers should throw an exception' do
+    it 'if there is a negative number then throw an exception' do
+      expect(string_calculator.add("-1,2")).to eq("negative numbers not allowed -1")
+    end
   end
 end
