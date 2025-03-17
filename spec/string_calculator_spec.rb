@@ -9,4 +9,9 @@ RSpec.describe 'StringCalculator' do
     @string_calculator = StringCalculator.new
     expect(@string_calculator.add("")).to eq(0)
   end
+
+  it 'adds two values in comma separated string' do
+    @string_calculator = StringCalculator.new
+    expect(@string_calculator.add("1,2")).to eq(3)
+  end
 end
