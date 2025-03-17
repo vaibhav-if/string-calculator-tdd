@@ -5,13 +5,19 @@ require "./string_calculator"
 # Input: “1,5”, Output: 6
 
 RSpec.describe 'StringCalculator' do
+  let(:string_calculator) { StringCalculator.new }
+
   it 'returns 0 for empty string' do
-    @string_calculator = StringCalculator.new
-    expect(@string_calculator.add("")).to eq(0)
+    expect(string_calculator.add("")).to eq(0)
   end
 
-  it 'adds two values in comma separated string' do
-    @string_calculator = StringCalculator.new
-    expect(@string_calculator.add("1,2")).to eq(3)
+  context 'adds multiple values in comma separated string' do
+    it 'adds two values in comma separated string' do
+      expect(string_calculator.add("1,2")).to eq(3)
+    end
+
+    it 'adds three values in comma separated string' do
+      expect(string_calculator.add("1,2,3")).to eq(6)
+    end
   end
 end
